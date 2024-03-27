@@ -38,3 +38,9 @@ startStop = machine.Pin(22, machine.Pin.IN)
 
 # moisture sensor
 moisture = machine.ADC(26)
+
+conversion = 3.3 / 65535
+
+while True:
+    moistureRead = moisture.read_u16() 
+    print(moistureRead)
