@@ -1,5 +1,5 @@
 import machine
-import utime
+import time
 
 numRows = 7
 numCols = 5
@@ -28,53 +28,53 @@ for col in colPins:
 	col.value(0)
 	
 # button to show location
-locButton = machine.Pin(7, machine.Pin.IN)
+locButton = machine.Pin(8, machine.Pin.IN)
 
 # button to save value
-saveVal = machine.Pin(8, machine.Pin.IN)
+saveVal = machine.Pin(6, machine.Pin.IN)
 
 # start and finish button
-startStop = machine.Pin(22, machine.Pin.IN)
-
-# button to read data file
-readData = machine.Pin(23, machine.Pin.IN)
+start = machine.Pin(5, machine.Pin.IN)
+stop = machine.Pin(7, machine.Pin.IN)
 
 # moisture sensor
 moisture = machine.ADC(26)
 goodSoil = False
 
-conversion = 3.3 / 65535
-
 storing = 0
+dataSheetNum = 0
 
 while True:
-    if startStop.value() == True:
-        if storing == 0:
-            storing += 1
-            file = open("sensors.txt","w")
-    
-    while storing == 1:
+    if start.value() == 1:
+        print("Data recording started.")
+        dataSheetNum += 1
+        storing = 1
+        file_name="sensorData{}.txt".format(dataSheetNum)
+        file = open(file_name,"w")
+
+    while (storing == 1):
         moistureRead = moisture.read_u16() 
-        print(moistureRead) 
+        print(moistureRead)
         
-        if saveVal.value() == True:
+        if saveVal.value() == 1:
+            print("Data point recorded.")
             if (300 < moistureRead < 700):
                 goodSoil = True
-                file.write(str(moistureRead) + ", Soil is adequate. \n")
+                file.write("Soil value: " + str(moistureRead) + ", Soil is adequate. Coordinates from origin: \n")
             else:
                 goodSoil = False
-                file.write(str(moistureRead) + ", Soil is poor. \n")
+                file.write(str(moistureRead) + ", Soil is poor. Coordinates from origin: \n")
         
-        if startStop.value() == True:
-            storing -= 1
+        if stop.value() == 1:
+            print("Data recording ended.")
+            storing = 0
             file.close()
-            
-    if readData.value() == True:
-        file = open("sensors.text")
-        print(file.read())
-        file.close()
-  
+        time.sleep(1)
+        
+    time.sleep(1)
     
+
+
     
     
 '''
