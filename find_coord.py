@@ -23,7 +23,7 @@ def cal_new_coord(coord1, bearing, distance):
     lat2 = math.degrees(lat2)
     lon2 = math.degrees(lon2)
     
-    return lat2, lon2
+    return [lat2, lon2]
 
 taipei_coord = [25.0330, 121.5654]
 beijing_coord = [39.9042, 116.4074]
