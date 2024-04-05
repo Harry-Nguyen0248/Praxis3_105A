@@ -14,19 +14,17 @@ def calculate_bearing(coord1, coord2):
     lat1 = math.radians(coord1[0])
     lon1 = math.radians(coord1[1])
     lat2 = math.radians(coord2[0])
-    lon2 = math.radians(coord1[1])
+    lon2 = math.radians(coord2[1])
     
     # Calculate the difference between longitudes
     diff_lon = lon2 - lon1
-    
-    # Calculate bearing using the Haversine formula
+        # Calculate bearing using the Haversine formula
     y = math.sin(diff_lon) * math.cos(lat2)
     x = math.cos(lat1) * math.sin(lat2) - math.sin(lat1) * math.cos(lat2) * math.cos(diff_lon)
     bearing = math.atan2(y, x)
     
     # Convert bearing from radians to degrees
     bearing = math.degrees(bearing)
-    print("Before normalization",bearing)
     # Normalize bearing to range [0, 360)
     bearing = (bearing + 360) % 360
     
