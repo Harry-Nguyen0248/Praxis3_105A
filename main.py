@@ -2,6 +2,7 @@ import machine
 import time
 import find_coord
 
+
 numRows = 7
 numCols = 5
 
