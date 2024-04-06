@@ -1,3 +1,5 @@
+import main
+
 dataSheetNum = input("Enter the selected data sheet number: ")
 print(dataSheetNum)
 
