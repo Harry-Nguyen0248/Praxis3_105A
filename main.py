@@ -1,6 +1,7 @@
 import machine
 import time
 
+
 numRows = 7
 numCols = 5
 

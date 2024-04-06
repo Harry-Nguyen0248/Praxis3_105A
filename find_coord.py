@@ -25,15 +25,15 @@ def cal_new_coord(coord1, bearing, distance):
     
     return [lat2, lon2]
 
-taipei_coord = [25.0330, 121.5654]
-beijing_coord = [39.9042, 116.4074]
-alicante_coord = [38.3460, -0.4907]
-shanghai_coord = [31.2304, 121.4737]
-taoyuan_coord = [24.9917, 121.2990]
+# taipei_coord = [25.0330, 121.5654]
+# beijing_coord = [39.9042, 116.4074]
+# alicante_coord = [38.3460, -0.4907]
+# shanghai_coord = [31.2304, 121.4737]
+# taoyuan_coord = [24.9917, 121.2990]
 
-distance = vincenty_inverse(taipei_coord, taoyuan_coord).m
-#print(distance)
-bearing = calculate_bearing(taoyuan_coord, taipei_coord)
-print(bearing)
-print(cal_new_coord(taipei_coord, bearing, distance))
-#print(cal_new_coord(43.660594, -79.390758, 180, 621.48))
+# distance = vincenty_inverse(taipei_coord, taoyuan_coord).m
+# #print(distance)
+# bearing = calculate_bearing(taoyuan_coord, taipei_coord)
+# print(bearing)
+# print(cal_new_coord(taipei_coord, bearing, distance))
+# #print(cal_new_coord(43.660594, -79.390758, 180, 621.48))
