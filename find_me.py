@@ -10,7 +10,7 @@ def find_me(cur_coord, matrix):
     #print("test", vincenty_inverse(matrix[5][0], current_coord).m)
     for row_i in range(len(matrix)):
         for col_i in range(len(matrix[row_i])):
-            new_distance = vincenty_inverse(matrix[row_i][col_i], current_coord).m
+            new_distance = vincenty_inverse(matrix[row_i][col_i], cur_coord).m
             print("row %d, column %d, distance %.5f" %(row_i, col_i, new_distance))
             if min_distance > new_distance:
                 coord_update = [row_i, col_i]
