@@ -1,5 +1,6 @@
 import machine
 import time
+import find_coord
 
 
 numRows = 7
@@ -24,9 +25,9 @@ colPins = {
 }
 
 for row in rowPins:
-	row.value(0)
+	row.value(1)
 for col in colPins:
-	col.value(0)
+	col.value(1)
 	
 # button to show location
 locButton = machine.Pin(8, machine.Pin.IN)
@@ -46,34 +47,50 @@ storing = 0
 dataSheetNum = 0
 
 while True:
+    location = get_coord() # FIGURE OUT WHERE THE COORDS ARE 3:
+        
+    if locButton.value() == 1:
+        print("Currently located at: " + str(location))
+            
+        
     if start.value() == 1:
         print("Data recording started.")
         dataSheetNum += 1
         storing = 1
         file_name="sensorData{}.txt".format(dataSheetNum)
         file = open(file_name,"w")
+        file.write("Starting coordinates: " + str(location) + "\n\n")
 
     while (storing == 1):
-        moistureRead = moisture.read_u16() 
+        moistureRead = moisture.read_u16() / 682
         print(moistureRead)
-        
+            
         if saveVal.value() == 1:
             print("Data point recorded.")
-            if (300 < moistureRead < 700):
+            if (47 <= moistureRead <= 62):
                 goodSoil = True
-                file.write("Soil value: " + str(moistureRead) + ", Soil is adequate. Coordinates from origin: \n")
+                file.write(str(moistureRead) + "%, Soil is adequate. Coordinates from origin: \n")
             else:
                 goodSoil = False
-                file.write(str(moistureRead) + ", Soil is poor. Coordinates from origin: \n")
-        
+                file.write(str(moistureRead) + "%, Soil is poor. Coordinates from origin: \n")
+            
         if stop.value() == 1:
             print("Data recording ended.")
             storing = 0
             file.close()
         time.sleep(1)
-        
+            
     time.sleep(1)
-    
+        
+
+
+        
+        
+
+
+        
+        
+
 
 
     
