@@ -21,9 +21,8 @@ def matrix_calc(coord1, coord2):
                 
     return matrix_final
 
-coord1 = [31.2304, 121.4737]
-coord2 = [31.2305, 121.47375]
+'''coord1 = [1, 1]
+coord2 = [2, 2]
 matrix1 = matrix_calc(coord1, coord2)
-# print(matrix1)
 # print(matrix1[2][0][1])
-# print(matrix1[0][2])
+# print(matrix1[0][2])'''
