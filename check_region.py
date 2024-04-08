@@ -1,5 +1,4 @@
 import math
-from final_matrix import matrix_calc
 from calc_distance import vincenty_inverse
 from calc_bearing import calculate_bearing
 from find_coord import cal_new_coord
