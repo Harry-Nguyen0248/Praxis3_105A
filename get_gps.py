@@ -7,7 +7,10 @@ import math
 import hashlib
 from L76.micropyGPS.micropyGPS import MicropyGPS
 
+<<<<<<< HEAD
 get_coord_button = machine.Pin(25, machine.Pin.IN)
+=======
+>>>>>>> 82e542e626d77fa59552f9eaaabe2400ec250ea9
 
 # define the UART number and its baudrate , when UARTx is 1 please solder the UART1 0R resistor on Pico-GPS-L76B board
 # UARTx = 1
@@ -48,9 +51,16 @@ def get_coord():
         if gnss_l76b.uart_any():
             sentence = parser.update(chr(gnss_l76b.uart_receive_byte()[0]))
             if sentence:
-                print('WGS84 Coordinate:Latitude(%c),Longitude(%c) %.9f,%.9f'%(parser.latitude[1],parser.longitude[1],parser.latitude[0],parser.longitude[0]))
+                #print('WGS84 Coordinate:Latitude(%c),Longitude(%c) %.9f,%.9f'%(parser.latitude[1],parser.longitude[1],parser.latitude[0],parser.longitude[0]))
+                #if get_coord_button.value() == 1:
                 lat = parser.latitude[0]
                 lon = parser.longitude[0]
                 return [lat, lon]
 
+<<<<<<< HEAD
 read_coord()
+=======
+
+get_gps()
+
+>>>>>>> 82e542e626d77fa59552f9eaaabe2400ec250ea9
